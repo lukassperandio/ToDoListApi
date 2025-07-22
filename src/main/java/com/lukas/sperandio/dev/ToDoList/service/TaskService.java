@@ -29,5 +29,14 @@ public class TaskService {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    public Task editTask(Long id, Task task) {
+        return taskRepository.findById(id)
+                .map(existingTask -> {
+                    existingTask.setNameOfTask(task.getNameOfTask());
+                    existingTask.setDescription(task.getDescription());
+                    existingTask.setEndDate(task.getEndDate());
+                    return taskRepository.save(existingTask);
+                }).orElse(null);  // Ou lançar exceção, conforme tua escolha
+    }
 
 }
