@@ -3,18 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router';
-import MainPage from './Pages/MainPage/MainPage';
+import { BrowserRouter } from 'react-router-dom';
 
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-export default function renderApp() {
-  return (
+root.render(
+  <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path='/teste' element={<MainPage />} />
-      </Routes>
-    </BrowserRouter>  
-  );
-}
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
+);
 
 reportWebVitals();

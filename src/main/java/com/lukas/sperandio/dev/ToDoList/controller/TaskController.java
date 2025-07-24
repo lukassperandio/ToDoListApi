@@ -21,6 +21,7 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @CrossOrigin
     @GetMapping("/allTasks")
     public ResponseEntity<List<Task>> getTasks(){
         return new ResponseEntity<List<Task>>(taskService.findAllTasks(), HttpStatus.OK);
