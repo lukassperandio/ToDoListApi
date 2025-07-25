@@ -27,6 +27,7 @@ public class TaskController {
         return new ResponseEntity<List<Task>>(taskService.findAllTasks(), HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/addTask")
     public ResponseEntity<Void> addTask(@RequestBody Task task){
         taskService.createTask(task);
@@ -38,6 +39,7 @@ public class TaskController {
         return taskService.filterTask(id);
     }
 
+    @CrossOrigin
     @PutMapping("/update/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task){
         Task updatedTask = taskService.editTask(id, task);

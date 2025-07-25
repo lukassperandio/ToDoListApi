@@ -36,6 +36,10 @@
   color: #5e5e5e;
 }
 
+.container{
+  margin-bottom: 1em;
+}
+
 .task-date {
   margin-top: 0.25rem;
   font-size: 0.9rem;
