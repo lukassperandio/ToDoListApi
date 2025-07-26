@@ -36,7 +36,17 @@ public class TaskService {
                     existingTask.setDescription(task.getDescription());
                     existingTask.setEndDate(task.getEndDate());
                     return taskRepository.save(existingTask);
-                }).orElse(null);  // Ou lançar exceção, conforme tua escolha
+                }).orElse(null);
+    }
+
+    public Task deleteTask(Long id) {
+        Optional<Task> taskOptional = taskRepository.findById(id);
+        if (taskOptional.isPresent()) {
+            Task task = taskOptional.get();
+            taskRepository.deleteById(id);
+            return task;
+        }
+        return null;
     }
 
 }

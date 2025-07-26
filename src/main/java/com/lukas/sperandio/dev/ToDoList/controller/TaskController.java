@@ -49,6 +49,18 @@ public class TaskController {
         return ResponseEntity.ok(updatedTask);
     }
 
+    @CrossOrigin
+    @DeleteMapping("/deleteTask/{id}")
+    public ResponseEntity<Task> deleteTask(@PathVariable Long id) {
+        Task deletedTask = taskService.deleteTask(id);
+        if (deletedTask != null) {
+            return new ResponseEntity<>(deletedTask, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }
 
 
