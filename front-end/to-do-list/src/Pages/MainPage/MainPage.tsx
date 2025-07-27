@@ -59,7 +59,6 @@ function MainPage() {
       });
   };
 
-  // Filtra por data específica, se selecionada
   const filteredTasks = tasks.filter(task => {
     if (!dayjs(task.endDate).isValid()) return false;
 
@@ -69,7 +68,6 @@ function MainPage() {
     return true;
   });
 
-  // Ordena as tasks filtradas
   let displayedTasks = [...filteredTasks];
   if (sortBy === 'closest') {
     displayedTasks.sort((a, b) => dayjs(a.endDate).diff(dayjs(b.endDate)));
