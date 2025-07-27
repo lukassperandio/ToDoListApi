@@ -78,7 +78,7 @@ function MainPage() {
                     setTaskToDelete(task);
                     onOpen();
                   }} display="flex" justifyContent="flex-end" className='button-delete' >Delete <FaTrashAlt className='icons'/></Text>
-                  <Text onClick={() => navigate(`/edit-task/${task.id}`)} display="flex" justifyContent="flex-end" className='button-edit'>Edit <FaPencil className='icons'/></Text>
+                  <Text onClick={() => navigate(`/edit-task/${task.id}`)} display="flex" justifyContent="flex-end" className='button-edit'>Edit <FaPencil className='icons'/></Text>                  
               </Box>
             </Box>
           ))}

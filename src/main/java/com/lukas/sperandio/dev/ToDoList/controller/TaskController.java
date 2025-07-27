@@ -40,9 +40,9 @@ public class TaskController {
     }
 
     @CrossOrigin
-    @PutMapping("/update/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task){
-        Task updatedTask = taskService.editTask(id, task);
+    @PutMapping("/editTask/{taskId}")
+    public ResponseEntity<Task> updateTask(@PathVariable("taskId") Long taskId, @RequestBody Task task){
+        Task updatedTask = taskService.editTask(taskId, task);
         if (updatedTask == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,7 +59,6 @@ public class TaskController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
 }
 

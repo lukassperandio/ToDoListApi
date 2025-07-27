@@ -1,0 +1,32 @@
+.page-container {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-left: 13em;
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 70em;
+  width: 100%;
+  padding: 2em;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 20em;
+}
+
+.create-task-button {
+  max-width: 10em;
+}
