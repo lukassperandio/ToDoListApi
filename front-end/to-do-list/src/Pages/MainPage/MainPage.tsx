@@ -26,9 +26,10 @@ interface Task {
 
 function MainPage() {
   const navigate = useNavigate();
-  const [tasks, setTasks] = useState<Task[]>();
+  const [tasks, setTasks] = useState<Task[]>([]);
   const { open, onOpen, onClose } = useDisclosure();
   const [taskToDelete, setTaskToDelete] = useState<Task | null>(null);
+  const filteredTasks = tasks.filter(task => dayjs(task.endDate).isValid());
 
   useEffect(() => { 
     api.get('/api/v1/tasks/allTasks')
@@ -37,6 +38,7 @@ function MainPage() {
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
+        setTasks([]);
       });
   }, []);
 
@@ -64,13 +66,11 @@ function MainPage() {
       >Add new Task <IoMdAddCircle className='add-icon'/></Text>
       
       <VStack mt={4} className="task-list" align="stretch">
-        {tasks
-          ?.filter(task => dayjs(task.endDate).isValid())
-          .map(task => (
-            <Box key={task.id} className="task-item">
-              <Text className="task-title">{task.nameOfTask}</Text>
-              <Text className="task-description">{task.description}</Text>
-              <Text className="task-date">
+        {filteredTasks.map(task => (
+          <Box key={task.id} className="task-item">
+            <Text className="task-title">{task.nameOfTask}</Text>
+            <Text className="task-description">{task.description}</Text>
+            <Text className="task-date">
                 {dayjs(task.endDate).format('DD/MM/YYYY')}
               </Text>
               <Box className="task-actions" gap={2}>
@@ -83,9 +83,10 @@ function MainPage() {
             </Box>
           ))}
       </VStack>
-      {tasks && tasks.length === 0 && (
+     {filteredTasks.length === 0 && (
         <Text className="no-tasks">No tasks available. Please add a new task.</Text>
       )}
+
       <Modal isOpen={open} onClose={onClose}>
         <ModalOverlay className='blur-overlay'/>
         <ModalContent className='modal-content'>

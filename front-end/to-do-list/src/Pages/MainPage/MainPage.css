@@ -90,3 +90,13 @@
   backdrop-filter: blur(6px);
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.no-tasks {
+  margin-top: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #718096;
+  text-align: center;
+  font-style: italic;
+  user-select: none;
+}
